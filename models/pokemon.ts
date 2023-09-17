@@ -1,7 +1,8 @@
 import { DataTypes } from "sequelize";
 
 import db from '../db/connection';
-import Tipos from "./tipos";
+import Tipo from "./tipos";
+import Usuario from "./usuario";
 
 const Pokemon = db.define('Pokemon',
 {
@@ -28,12 +29,19 @@ const Pokemon = db.define('Pokemon',
     tipo_id:{
         type:DataTypes.INTEGER,
         references:{
-            model:Tipos,
+            model:Tipo,
             key:'id',
         },
     },
     estado: {
         type: DataTypes.BOOLEAN
+    },
+    usuarioId:{
+        type:DataTypes.INTEGER,
+        references:{
+            model:Usuario,
+            key:'id',
+        }
     }
 },{
     timestamps:false
