@@ -3,11 +3,22 @@ import { DataTypes } from "sequelize";
 import db from '../db/connection';
 
 const Usuario = db.define('Usuario',{
-    nombre:{
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    nombreUsuario:{
         type:DataTypes.STRING
     },
-    email: {
+    contraseña:{
+        type:DataTypes.STRING
+    },
+    correoElectronico: {
         type: DataTypes.STRING
+    },
+    fechaRegistro:{
+        type:DataTypes.DATE
     },
     estado: {
         type: DataTypes.BOOLEAN

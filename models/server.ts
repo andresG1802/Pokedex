@@ -4,7 +4,8 @@ import db from '../db/connection';
 
 import userRoutes from '../routes/usuario';
 
-
+import pokemonRoutes from '../routes/pokemon';
+import tiposRoutes from '../routes/tipos';
 
 
 class Server {
@@ -13,8 +14,8 @@ class Server {
     private port: string;
     private apiPaths = {
         usuarios: '/api/usuarios',
-        productos:'/api/productos',
-        ventas:'/api/ventas',
+        pokemones:'/api/pokemones',
+        tipos:'/api/tipos',
     }
 
     constructor() {
@@ -54,7 +55,9 @@ class Server {
 
     routes()
     {
-        this.app.use(this.apiPaths.usuarios,userRoutes)
+        this.app.use(this.apiPaths.usuarios,userRoutes);
+        this.app.use(this.apiPaths.pokemones,pokemonRoutes);
+        this.app.use(this.apiPaths.tipos,tiposRoutes);
     }
     listen() {
         this.app.listen( this.port, () => {
